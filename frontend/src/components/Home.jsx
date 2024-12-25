@@ -16,17 +16,30 @@ const Home = () => {
           setAudioFiles(response.data);
         });
     }, []);
+
+    const handlePlayPause = (index) => {
+      const audioElement = document.getElementById(`audio-${index}`);
+      if (audioElement.paused) {
+        audioElement.play();
+      } else {
+        audioElement.pause();
+      }
+    };
   
     return (
       <div>
-      <h1>Home</h1>
-        <h1>this is fromDJ: {message}</h1>
-        <h2>Audio Files:</h2>
+        <h1>Audio Files</h1>
         <ul>
           {audioFiles.map((audio, index) => (
             <li key={index}>
-              <p>{audio.title}</p>
-              <audio controls>
+              <img
+                className='audio-image'
+                src={audio.image}
+                alt={audio.title}
+                style={{ cursor: "pointer", width: "200px", height: "200px" }}
+                onClick={() => handlePlayPause(index)}
+              />
+              <audio id={`audio-${index}`} style={{ display: "none" }}>
                 <source src={audio.url} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
