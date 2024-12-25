@@ -1,0 +1,23 @@
+# Virtual Environment
+venv/
+
+# Node.js
+node_modules/
+build/
+dist/
+
+# Django
+db.sqlite3
+/media/
+/staticfiles/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor Configurations
+.vscode/
+.idea/
